@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ditsha 💜</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:linear-gradient(135deg,#ff9ecf,#c084fc);
+  text-align:center;
+  overflow-x:hidden;
+  color:white;
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding:60px 25px;
+  opacity:0;
+  transition:opacity 0.6s ease;
+}
+
+.active{
+  display:block;
+  opacity:1;
+}
+
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:2.2rem;
+}
+
+p{
+  max-width:600px;
+  margin:20px auto;
+  line-height:1.6;
+}
+
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:30px;
+  margin-top:25px;
+  font-size:1rem;
+  cursor:pointer;
+  background:white;
+  color:#db2777;
+  font-weight:600;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+.float{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:up 6s linear infinite;
+}
+
+@keyframes up{
+  0%{transform:translateY(0);opacity:1;}
+  100%{transform:translateY(-110vh);opacity:0;}
+}
+
+#vinayBtn{
+  position:absolute;
+  transition:0.3s;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+setInterval(()=>{
+ let el=document.createElement("div");
+ el.className="float";
+ el.innerHTML=["💖","🌸","💜","✨"][Math.floor(Math.random()*4)];
+ el.style.left=Math.random()*100+"vw";
+ document.body.appendChild(el);
+ setTimeout(()=>el.remove(),6000);
+},700);
+</script>
+
+<!-- PAGE 1 INTRO -->
+<div class="page active" id="page1">
+<h1 id="typing"></h1>
+<p id="subText"></p>
+<button id="startBtn" style="display:none;" onclick="go(2)">Continue</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<h1>My First Promise 🌸</h1>
+<p>
+I promise I will always respect your silence.  
+You don’t have to explain everything.  
+You don’t have to open up before you're ready.  
+
+I’ll never force you —  
+but I’ll always stay when you choose to speak.
+</p>
+<button onclick="go(3)">Next</button>
+</div>
+
+<!-- PAGE 3 (VINAY SIDE LINES) -->
+<div class="page" id="page3">
+<h1>Something From My Side 💫</h1>
+<p>
+Sometimes I don’t say things clearly.  
+But today I want you to know something simple —  
+
+You matter to me.  
+
+Not in a dramatic way.  
+Not in a complicated way.  
+Just in a genuine, calm, steady way.
+</p>
+<button onclick="go(4)">One More Promise</button>
+</div>
+
+<!-- PAGE 4 (DISTANCE PROMISE) -->
+<div class="page" id="page4">
+<h1>A Real Promise 💜</h1>
+<p>
+Even if you're in Bangladesh 🇧🇩  
+and I’m in India 🇮🇳,  
+
+distance won’t change my intentions.  
+
+I promise to stay real with you.  
+No fake words. No unnecessary drama.  
+Just honesty and support.
+</p>
+<button onclick="go(5)">Fun Question 😄</button>
+</div>
+
+<!-- PAGE 5 QUIZ -->
+<div class="page" id="page5">
+<h1>Who Eats More Brain? 😏</h1>
+
+<button id="vinayBtn" onclick="runAway()">Vinay 😎</button>
+<button id="ditshaBtn" onclick="go(6)">Ditsha 😌</button>
+</div>
+
+<!-- PAGE 6 SURPRISE -->
+<div class="page" id="page6">
+<h1>💜 A Special Message 💜</h1>
+
+<img src="https://i.ibb.co/fYz6nnsy/7b799a9b84b01d9d341acdb8e40f8435.jpg"
+style="
+width:90%;
+max-width:300px;
+height:auto;
+border-radius:20px;
+margin-top:20px;
+box-shadow:0 0 40px #a855f7;
+">
+
+<p>
+Hi Ditsha, this is Taehyung 💜  
+I heard you're one of my biggest fans.  
+
+One day we’ll meet,  
+take lots of photos together 📸  
+and create beautiful memories.  
+
+Until then, keep shining.
+</p>
+
+<h2>Happy Promise Day 🌸</h2>
+</div>
+
+<script>
+function go(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('page'+n).classList.add('active');
+}
+
+let text="Hey Ditsha 💜";
+let sub="I made something special for you today...";
+let i=0;
+
+function type(){
+ if(i<text.length){
+   document.getElementById("typing").innerHTML+=text.charAt(i);
+   i++;
+   setTimeout(type,80);
+ }else{
+   setTimeout(()=>{
+     document.getElementById("subText").innerHTML=sub;
+     document.getElementById("startBtn").style.display="inline-block";
+   },500);
+ }
+}
+type();
+
+let vinaySize=1;
+let ditshaSize=1;
+
+function runAway(){
+ let btn=document.getElementById("vinayBtn");
+ btn.style.top=Math.random()*70+"%";
+ btn.style.left=Math.random()*70+"%";
+
+ vinaySize-=0.1;
+ if(vinaySize>0.4){
+   btn.style.transform="scale("+vinaySize+")";
+ }
+
+ ditshaSize+=0.1;
+ document.getElementById("ditshaBtn").style.transform="scale("+ditshaSize+")";
+}
+</script>
+
+</body>
+  </html>
